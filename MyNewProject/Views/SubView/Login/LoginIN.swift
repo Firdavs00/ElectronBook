@@ -8,9 +8,23 @@
 import SwiftUI
 
 struct LoginIN: View {
-    
+    @EnvironmentObject var session: SessionStore
     @Environment(\.presentationMode) var presentationMode
-    @State var login = ""
+    @State var email = ""
+    @State var password = ""
+    @State var isLoading = false
+    func doSignIn(){
+          isLoading = true
+          SessionStore().signIn(email: email, password: password, handler: {(res,err) in
+              isLoading = false
+              if err != nil {
+                  print("Check email or password")
+                  return
+              }
+              print("User signed in")
+              session.listen()
+          })
+      }
     var body: some View {
         VStack(spacing: 20){
             Spacer()
@@ -20,30 +34,33 @@ struct LoginIN: View {
                     .frame(width: 100, height: 100)
                 Text("You are a teacher!")
             }
-            TextField("Login", text: $login)
+            TextField("Login", text: $email)
                 .frame(height: 40)
                 .padding(.leading)
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.red))
                 .background(Color.red.opacity(0.1))
                 .cornerRadius(8)
             
-            SecureField("Password", text: $login)
+            SecureField("Password", text: $password)
                 .frame(height: 40)
                 .padding(.leading)
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.red))
                 .background(Color.red.opacity(0.1))
                 .cornerRadius(8)
-            
-            Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Text("Login In")
-                    .frame(width: UIScreen.main.bounds.width - 27, height: 40)
-                    .foregroundColor(.white)
-                    .background(Color.red)
-                    .cornerRadius(8)
-                
-            })
+            if email != "laylokadirova@gmail.com" && password != "123456789" {
+                Button(action: {
+                    doSignIn()
+                   
+                }, label: {
+                    Text("Login In")
+                        .frame(width: UIScreen.main.bounds.width - 27, height: 40)
+                        .foregroundColor(.white)
+                        .background(Color.red)
+                        .cornerRadius(8)
+                    
+                })
+            }
+          
             Spacer()
         }
         .padding()

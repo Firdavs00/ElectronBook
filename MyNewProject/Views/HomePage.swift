@@ -89,6 +89,15 @@ struct MenuView: View {
     @Binding var showMenu: Bool
     @Binding var animatePath: Bool
     @Binding var animateBG: Bool
+    @State var isLoading = false
+    @EnvironmentObject var session: SessionStore
+    func doSignOut(){
+           isLoading = true
+           if SessionStore().signOut() {
+               isLoading = false
+               session.listen()
+           }
+       }
     var body: some View {
         ZStack {
             // Blur View...
@@ -120,6 +129,7 @@ struct MenuView: View {
                 Button(action: {
                     UserDefaults.standard.set(false, forKey: "status")
                     NotificationCenter.default.post(name: Notification.Name("status"), object: nil)
+                    doSignOut()
                 }, label: {
                     HStack(spacing:0){
                         Image("outPut")

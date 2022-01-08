@@ -9,15 +9,13 @@ import SwiftUI
 import Firebase
 
 @main
-
-
 struct MyNewProjectApp: App {
-   
-    @UIAplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
  
     var body: some Scene {
         WindowGroup {
-            StarterPage()
+            StarterPage().environmentObject(SessionStore())
         }
     }
 }
