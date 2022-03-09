@@ -10,12 +10,25 @@ import Firebase
 
 @main
 struct MyNewProjectApp: App {
-
+var vm = UserDefaults()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
- 
+    @State private var showLaunchView: Bool = true
     var body: some Scene {
         WindowGroup {
-            StarterPage().environmentObject(SessionStore())
+            ZStack {
+                StarterPage()
+                
+                ZStack {
+                    if showLaunchView {
+                        LaunchScreenView(showLaunchView: $showLaunchView)
+                            .transition(.move(edge: .leading))
+                    }
+                }
+                .zIndex(2.0)
+                .onAppear {
+                    print("token -> \(UserDefaults.standard.string(forKey: "token") ?? "No token")")
+                }
+            }
         }
     }
 }

@@ -16,7 +16,6 @@ struct CreateView: View {
         
         VStack {
             VStack {
-                
                 VStack (alignment:.leading,spacing: 4) {
                     Text("Mavzu nomi:")
                         .font(.headline)
@@ -26,6 +25,7 @@ struct CreateView: View {
                         .shadow(radius: 10)
                 }
                 .padding()
+                
                 VStack (alignment: .leading, spacing: 4) {
                     Text("File yuklang! (pdf)")
                         .font(.headline)
@@ -49,7 +49,7 @@ struct CreateView: View {
                                 .shadow(radius: 10)
                         }
                     })
-                        .fileImporter(isPresented: $openFile, allowedContentTypes: [.png]) { res in
+                        .fileImporter(isPresented: $openFile, allowedContentTypes: [.pdf]) { res in
                             do {
                                 let fileUrl = try res.get()
                                 print(fileUrl)
