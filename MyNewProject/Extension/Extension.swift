@@ -34,7 +34,6 @@ struct MenuShape: Shape {
         get { return value }
         set { return value = newValue}
     }
-    
     func path(in rect: CGRect) -> Path {
         Path { path in
             
@@ -69,5 +68,70 @@ extension View {
     }
     func getRect() -> CGRect {
         return UIScreen.main.bounds
+    }
+}
+
+    struct SuperTextField: View {
+        
+        @Binding var text: String
+        var placeholder: Text
+       
+        var editingChanged: (Bool)->() = { _ in }
+        var commit: ()->() = { }
+
+        var body: some View {
+            ZStack(alignment: .leading) {
+                if text.isEmpty { placeholder }
+                TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+            }
+        }
+
+    }
+struct SecureTextField: View {
+    
+    @Binding var text: String
+    var placeholder: Text
+   
+    var commit: ()->() = { }
+    
+    var body: some View {
+        ZStack(alignment: .leading) {
+            if text.isEmpty { placeholder }
+           SecureField("", text: $text, onCommit: commit)
+        }
+    }
+}
+
+struct FirstResponderTextField: UIViewRepresentable {
+    
+        @Binding var text: String
+        var placeholder: String
+    
+    class Coordinator: NSObject, UITextFieldDelegate {
+        @Binding var text: String
+        var becameFirstResponder = false
+        init(text: Binding<String>) {
+            self._text = text
+        }
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            text = textField.text ?? ""
+        }
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(text: $text)
+    }
+    func makeUIView(context: Context) -> some UIView {
+        let textField = UITextField()
+        textField.delegate = context.coordinator
+        textField.placeholder = placeholder
+        return textField
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        if !context.coordinator.becameFirstResponder {
+            uiView.becomeFirstResponder()
+            context.coordinator.becameFirstResponder = true
+        }
     }
 }

@@ -13,25 +13,20 @@ struct StudentHomePage: View {
     @State var animatePath: Bool = false
     @State var animateBG: Bool = false
     var body: some View {
-        NavigationView {
+        
             ZStack {
                 VStack {
                     StudentNavigationBar(showMenu: $showMenu, showCreate: $showCreate, animatePath: $animatePath, animateBG: $animateBG)
-                    
                     sherText
                         .padding(.top,90)
                     Spacer()
                 }
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                .background(Color.white)
-                Color.black
+                Color("blurOpenBackColor")
                     .opacity(animateBG ? 0.25 : 0)
                     .ignoresSafeArea()
                 StudentMenuLeftView(showMenu: $showMenu, animatePath: $animatePath, animateBG: $animateBG)
                     .offset(x: showMenu ? 0 : -getRect().width)
             }
-            .navigationBarHidden(true)
-        }
     }
 }
 
@@ -44,6 +39,7 @@ struct StudentHomePage_Previews: PreviewProvider {
 extension StudentHomePage {
     private var sherText: some View {
         VStack {
+            if !animateBG {
             Text(
 """
 Yer yuzi bir dashtu sabro bo'lsa, gulzori ilm,
@@ -52,6 +48,7 @@ Ilmu fan birla qurollanmoqda sardori ilm,
 Ilmi yo’q, xech bir jonga yetkurmaydi ozor ilm.
 """)
                 .font(.headline)
+            }
         }
         
     }

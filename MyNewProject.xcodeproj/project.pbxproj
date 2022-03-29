@@ -24,6 +24,7 @@
 		88B9FEEA27D0A639000B1DBB /* TeachNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9FEE927D0A639000B1DBB /* TeachNavigationBar.swift */; };
 		88B9FEF027D0B7CC000B1DBB /* StudentNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9FEEF27D0B7CC000B1DBB /* StudentNavigationBar.swift */; };
 		88B9FEF227D0B801000B1DBB /* StudentMenuLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9FEF127D0B801000B1DBB /* StudentMenuLeftView.swift */; };
+		88C50E9927DF4638006EAEA0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C50E9827DF4638006EAEA0 /* ProgressView.swift */; };
 		88E5C8E5276FACFB00C76560 /* MyNewProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E5C8E4276FACFB00C76560 /* MyNewProjectApp.swift */; };
 		88E5C8E7276FACFB00C76560 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E5C8E6276FACFB00C76560 /* ContentView.swift */; };
 		88E5C8E9276FACFD00C76560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E5C8E8276FACFD00C76560 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		88B9FEE927D0A639000B1DBB /* TeachNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachNavigationBar.swift; sourceTree = "<group>"; };
 		88B9FEEF27D0B7CC000B1DBB /* StudentNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentNavigationBar.swift; sourceTree = "<group>"; };
 		88B9FEF127D0B801000B1DBB /* StudentMenuLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuLeftView.swift; sourceTree = "<group>"; };
+		88C50E9827DF4638006EAEA0 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		88E5C8E1276FACFB00C76560 /* MyNewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E5C8E4276FACFB00C76560 /* MyNewProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewProjectApp.swift; sourceTree = "<group>"; };
 		88E5C8E6276FACFB00C76560 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		88B9FEE127D0A34B000B1DBB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				88C50E9627DF4615006EAEA0 /* Components */,
 				8846B6CC27D5C038007E588F /* Launch */,
 				882B00D827739DE300710F4F /* SubView */,
 				88E5C8F2276FAD1B00C76560 /* Views */,
@@ -187,6 +190,14 @@
 				88B9FEE527D0A49D000B1DBB /* TeacherMenuLeftView.swift */,
 			);
 			path = TeacherComponents;
+			sourceTree = "<group>";
+		};
+		88C50E9627DF4615006EAEA0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				88C50E9827DF4638006EAEA0 /* ProgressView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		88E5C8D8276FACFB00C76560 = {
@@ -393,6 +404,7 @@
 				88B9FEEA27D0A639000B1DBB /* TeachNavigationBar.swift in Sources */,
 				88E5C8F7276FAED600C76560 /* Extension.swift in Sources */,
 				883B9589278C260F006D5A6F /* User.swift in Sources */,
+				88C50E9927DF4638006EAEA0 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

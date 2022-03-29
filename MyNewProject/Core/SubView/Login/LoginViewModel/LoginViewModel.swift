@@ -10,9 +10,12 @@ import SwiftUI
 
 class LoginViewModel: ObservableObject {
     
+    @AppStorage("teacherSignIn") var teachSign: Bool = false
+    
     var userDefault = UserDefault()
     @Published var user: User?
     @Published var isErrorCode401: Bool = false
+    var isLoading: Bool = false
     @Published var email = ""
     @Published var password = ""
     
@@ -28,18 +31,16 @@ class LoginViewModel: ObservableObject {
             
             if let data = model, let response = response as? HTTPURLResponse,
                (response.statusCode >= 200 && response.statusCode < 300) {
-                
+      
+
                 if let result = try? JSONDecoder().decode(AuthResponse.self, from: data) {
+//                    self.isLoading = true
                     DispatchQueue.main.async { [weak self] in
-                        
+                       
                         if result.token != nil {
                             self?.userDefault.cacheToken(result: result)
-                            guard let users = result.user else { return }
-                            
-                            self?.user = users
-                            print("\(self?.user)")
-                            UserDefaults.standard.set(true, forKey: "teacherStatus")
-                            NotificationCenter.default.post(name: NSNotification.Name("teacherStatus"), object: nil)
+                            self?.teachSign = true
+//                            self?.isLoading = false
                             print(result)
                         }
                     }

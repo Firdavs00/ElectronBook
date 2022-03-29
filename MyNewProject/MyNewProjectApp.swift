@@ -10,14 +10,14 @@ import Firebase
 
 @main
 struct MyNewProjectApp: App {
-var vm = UserDefaults()
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     @State private var showLaunchView: Bool = true
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
+    
     var body: some Scene {
         WindowGroup {
             ZStack {
                 StarterPage()
-                
                 ZStack {
                     if showLaunchView {
                         LaunchScreenView(showLaunchView: $showLaunchView)
@@ -29,14 +29,10 @@ var vm = UserDefaults()
                     print("token -> \(UserDefaults.standard.string(forKey: "token") ?? "No token")")
                 }
             }
+//            .environment(\.colorScheme, isDarkMode ? .dark : .light)
+            .preferredColorScheme(isDarkMode ? .dark : .light)
         }
     }
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        
-        FirebaseApp.configure()
-        return true
-    }
-}
+//  sardorbek@gmail.com

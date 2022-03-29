@@ -12,8 +12,4 @@ struct UserDefault {
     func cacheToken(result: AuthResponse) {
         UserDefaults.standard.set(result.token, forKey: "token")
     }
-    
-    func tupButton(button: Bool) {
-        UserDefaults.standard.set(button, forKey: "teacherStatus")
-    }
 }

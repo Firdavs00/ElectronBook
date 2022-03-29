@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct CreateView: View {
+    
     @State var mavzuName = ""
     @State var fileName = ""
     @State var openFile = false
 
     var body: some View {
-        
         VStack {
             VStack {
                 VStack (alignment:.leading,spacing: 4) {

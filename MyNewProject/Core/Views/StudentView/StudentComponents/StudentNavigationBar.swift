@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct StudentNavigationBar: View {
-    @State var tapBlur: Bool = false
+
     @Binding var showMenu: Bool
     @Binding var showCreate: Bool
     @Binding var animatePath: Bool
     @Binding var animateBG: Bool
+    
     var body: some View {
         VStack {
             HStack {
                 Button{
-                    tapBlur = true
                     withAnimation {
                         animateBG.toggle()
                     }
@@ -30,32 +30,35 @@ struct StudentNavigationBar: View {
                             animatePath.toggle()
                         }
                 } label: {
-                    Image("menu")
+                    Image(systemName: "line.3.horizontal")
                         .padding(.leading)
+                        .foregroundColor(Color("acsentColor"))
                 }
                 Spacer()
                 Text("Elektron darslik")
                     .font(.headline)
+                    .foregroundColor(Color("basicTitlesColor"))
                  
                 Spacer()
                 Button {
                     showCreate.toggle()
                 } label: {
-                    Image("create")
+                    Image(systemName: "folder.fill.badge.plus")
                         .padding(.trailing)
                 }
                 .hidden()
             }
             Rectangle()
                 .frame(width: UIScreen.main.bounds.width, height: 1)
-                .foregroundColor(.black)
+                .foregroundColor(Color("acsentColor"))
         }
-        .padding(.top,40)
     }
 }
 
-//struct StudentNavigationBar_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StudentNavigationBar()
-//    }
-//}
+struct StudentNavigationBar_Previews: PreviewProvider {
+    static var previews: some View {
+        StudentNavigationBar(showMenu: .constant(true), showCreate: .constant(true), animatePath: .constant(true), animateBG: .constant(true))
+            
+            
+    }
+}

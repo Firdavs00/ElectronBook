@@ -11,6 +11,7 @@ struct choicePage: View {
     @State var showSheet: Bool = false
     @State var teachAnimate: Bool = false
     @State var studAnimate: Bool = false
+    @AppStorage("studentSignIn") var studSign: Bool = false
     var body: some View {
         
         VStack {
@@ -19,7 +20,7 @@ struct choicePage: View {
                     Rectangle()
                         .frame(width: 130, height: 140)
                         .cornerRadius(10)
-                        .foregroundColor(teachAnimate ? Color("choiceBackColor").opacity(0.7) :  Color.white)
+                        .foregroundColor(teachAnimate ? Color("choiceBackColor").opacity(0.7) :  Color("viewColor"))
                         .cornerRadius(13)
                     Image("teacher-1")
                         .resizable()
@@ -41,7 +42,7 @@ struct choicePage: View {
                 ZStack(alignment: .bottom) {
                     Rectangle()
                         .frame(width: 130, height: 140)
-                        .foregroundColor(studAnimate ? Color("choiceBackColor").opacity(0.7) :  Color.white)
+                        .foregroundColor(studAnimate ? Color("choiceBackColor").opacity(0.7) :  Color("viewColor"))
                         .cornerRadius(13)
                     Image("student-1")
                         .resizable()
@@ -64,12 +65,11 @@ struct choicePage: View {
                 if teachAnimate {
                     showSheet.toggle()
                 } else if studAnimate {
-                    UserDefaults.standard.set(true, forKey: "status")
-                    NotificationCenter.default.post(name: Notification.Name("status"), object: nil)
+                    studSign = true
                 }
             }, label: {
                 ZStack {
-                    Text(teachAnimate ? "Teacher" : "")
+                    Text(teachAnimate ? "O'qituvchi" : "")
                         .foregroundColor(Color.white)
                         .font(.headline)
                         .frame(width: teachAnimate ?  UIScreen.main.bounds.width - 30 : 0, height: 35)
@@ -85,16 +85,16 @@ struct choicePage: View {
                         .cornerRadius(8)
                 }
             })
-                .shadow(color: Color("choiceButton").opacity(0.3), radius: 10, x: -10, y: -10)
+                .shadow(color: Color("choiceButton").opacity(0.4), radius: 10, x: -10, y: -10)
                 .padding()
                 .sheet(isPresented: $showSheet) { LoginIN() }
         }
-     
     }
 }
 
 struct choicePage_Previews: PreviewProvider {
     static var previews: some View {
         choicePage()
+            .preferredColorScheme(.dark)
     }
 }

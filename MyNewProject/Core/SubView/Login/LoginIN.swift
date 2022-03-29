@@ -6,63 +6,93 @@
 //
 
 import SwiftUI
-import AlertToast
+//import AlertToast
 struct LoginIN: View {
+    
     @StateObject var vm = LoginViewModel()
     @Environment(\.presentationMode) var presentationMode
     
+    @FocusState private var emailInFocus: Bool
+    @FocusState private var passwordInFocus: Bool
     @State var action: Bool = false
     @State var toast: Bool = false
+    
     var body: some View {
-        VStack(spacing: 20){
-            Spacer()
-            VStack (spacing: 0){
-                Image("images")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                Text("You are a teacher!")
-            }
-            TextField("Login", text: $vm.email)
-                .frame(height: 40)
-                .padding(.leading)
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.red))
-                .background(Color.red.opacity(0.1))
-                .cornerRadius(8)
-            
-            SecureField("Password", text: $vm.password)
-                .frame(height: 40)
-                .padding(.leading)
-                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.red))
-                .background(Color.red.opacity(0.1))
-                .cornerRadius(8)
-
+        ZStack{
+            VStack(spacing: 20) {
+                Spacer()
+                VStack (spacing: 0){
+                    Image("user-icon")
+                        .resizable()
+                        .clipShape(Circle())
+                        .frame(width: 100, height: 100)
+                    Text("You are a teacher!")
+                        .foregroundColor(Color("basicTitlesColor"))
+                }
+                FirstResponderTextField(
+                    text: $vm.email, placeholder: "Login")
+                    .focused($emailInFocus)
+                    .frame(height: 40)
+                    .padding(.leading)
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color("textFaildBorderColor")))
+                    .background(Color.blue.opacity(0.1))
+                    .cornerRadius(8)
+                
+                SecureTextField(
+                    text: $vm.password, placeholder: Text("Password").foregroundColor(.gray.opacity(0.7)))
+                    .focused($passwordInFocus)
+                    .frame(height: 40)
+                    .padding(.leading)
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color("textFaildBorderColor")))
+                    .background(Color.blue.opacity(0.1))
+                    .cornerRadius(8)
+                
                 Button(action: {
-
-                    vm.postLogin(email: vm.email, password: vm.password)
-                        
-                    if vm.isErrorCode401 == true {
-                    toast = true
-                    }
-                   
+                    sign()
+                    //                    if vm.isErrorCode401 == true {
+                    //                    toast = true
+                    //                    }
                 }, label: {
                     Text("Login In")
                         .frame(width: UIScreen.main.bounds.width - 27, height: 40)
                         .foregroundColor(.white)
-                        .background(Color.red)
+                        .background(Color("lognInColor"))
                         .cornerRadius(8)
                 })
-            Spacer()
+                Spacer()
+            }
+            .padding()
+            if vm.isLoading {
+                Color.black.opacity(0.3)
+                    .edgesIgnoringSafeArea(.all)
+                ProgresView()
+            }
         }
-        .padding()
-        .toast(isPresenting: $toast, duration: 1.5, tapToDismiss: true, alert: {
-            AlertToast(type: .error(.red), title: Optional("Xatolik"), subTitle: Optional("Email yoki parol xato"))
-        })
-        
+//        .toast(isPresenting: $toast, duration: 1.5, tapToDismiss: true, alert: {
+//            AlertToast(type: .error(.red), title: Optional("Xatolik"), subTitle: Optional("Email yoki parol xato"))
+//        })
     }
 }
 
 struct LoginIN_Previews: PreviewProvider {
     static var previews: some View {
-        LoginIN()
+        ZStack{
+            LoginIN()
+        }
+    }
+}
+
+extension LoginIN {
+    func sign() {
+        let emailIsValied = !emailInFocus.description.isEmpty
+        let passwordIsValied = !passwordInFocus.description.isEmpty
+        if emailIsValied && passwordIsValied {
+            emailInFocus = false
+            passwordInFocus = true
+        } else {
+            emailInFocus = true
+            passwordInFocus = false
+        }
+        vm.postLogin(email: vm.email, password: vm.password)
     }
 }

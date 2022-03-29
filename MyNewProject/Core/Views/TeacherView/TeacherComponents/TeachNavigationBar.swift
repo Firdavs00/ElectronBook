@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct TeacherNavigationBar: View {
+    
     @Binding var showMenu: Bool
     @Binding var showCreate: Bool
     @Binding var animatePath: Bool
     @Binding var animateBG: Bool
+    
     var body: some View {
         VStack {
             HStack {
@@ -27,22 +29,25 @@ struct TeacherNavigationBar: View {
                     withAnimation(.spring()) {
                         showMenu.toggle()
                     }
-                
                         }
                 } label: {
-                    Image("menu")
+                    Image(systemName: "line.3.horizontal")
                         .padding(.leading)
+                        .foregroundColor(Color("acsentColor"))
                 }
                 Spacer()
                 Text("O'quv Darsliklari")
                     .font(.headline)
-                
+                    .foregroundColor(Color("basicTitlesColor"))
                 Spacer()
+                
                 Button {
                     showCreate.toggle()
                 } label: {
-                    Image("create")
+                    Image(systemName: "folder.fill.badge.plus")
                         .padding(.trailing)
+                        .foregroundColor(Color("acsentColor"))
+
                 }
                 .sheet(isPresented: $showCreate, content: {
                     CreateView()
@@ -50,15 +55,15 @@ struct TeacherNavigationBar: View {
             }
             Rectangle()
                 .frame(width: UIScreen.main.bounds.width, height: 1)
-                .foregroundColor(.black)
+                .foregroundColor(Color("acsentColor"))
         }
-        .padding(.top,40)
     }
 }
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
         TeacherNavigationBar(showMenu: .constant(true), showCreate: .constant(true), animatePath: .constant(true), animateBG: .constant(true))
+            
     }
 
 }

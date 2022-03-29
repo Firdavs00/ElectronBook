@@ -9,7 +9,10 @@ import SwiftUI
 
 struct TeacherMenuLeftView: View {
     
-    @EnvironmentObject var vm: LoginViewModel
+    @AppStorage("teacherSignIn") var teachSign: Bool = false
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
+    @State private var offset: CGFloat = 180
+
     @Binding var showMenu: Bool
     @Binding var animatePath: Bool
     @Binding var animateBG: Bool
@@ -27,14 +30,9 @@ struct TeacherMenuLeftView: View {
             
             // Content...
             VStack(alignment: .leading, spacing: 0) {
-                
                 profile
-//                    .onAppear {
-//                        vm.postLogin(email: vm.email, password: vm.password)
-//                    }
-                    .padding(.horizontal)
-                    .background(Color.black.opacity(0.5))
-               
+                    .padding(.horizontal).padding(.bottom,5)
+                    .background(Color("profilBackColor"))
                 teachCategory
             }
             .padding(.trailing, 105)
@@ -47,9 +45,9 @@ struct TeacherMenuLeftView: View {
             MenuShape(value: animatePath ? 150 : 0)
                 .stroke(
                     .linearGradient(.init(colors:
-                                            [.red,
-                                             .blue.opacity(0.7),
-                                             .red.opacity(0.5),
+                                            [Color("menuShape1"),
+                                             Color("menuShape2").opacity(0.7),
+                                             Color("menuShape1").opacity(0.5),
                                              Color.clear]),
                                     startPoint: .top,
                                     endPoint: .bottom),
@@ -58,7 +56,6 @@ struct TeacherMenuLeftView: View {
                 .padding(.leading, -50)
         )
         .edgesIgnoringSafeArea(.all)
-        
     }
 }
 
@@ -66,14 +63,15 @@ struct TeacherMenuLeftView: View {
 struct TeacherMenuLeftView_Previews: PreviewProvider {
     static var previews: some View {
         TeacherMenuLeftView(showMenu: .constant(true), animatePath: .constant(true), animateBG: .constant(true))
+            .preferredColorScheme(.dark)
     }
 }
 
 extension TeacherMenuLeftView {
     
     private var menu: some View {
-
-        BlurView(style: .systemThinMaterialLight)
+        
+        BlurView(style: .systemMaterialDark)
             .onTapGesture {
                 withAnimation(
                     .interactiveSpring(response: 0.4, dampingFraction: 0.3, blendDuration: 0.3)) {
@@ -90,55 +88,69 @@ extension TeacherMenuLeftView {
     
     private var profile: some View {
         
-        HStack(alignment: .center, spacing: 10) {
-            Image(systemName: "camera.circle.fill")
-                .font(.system(size: 60))
-                .foregroundColor(.white)
-            VStack(alignment: .leading) {
-                Text(vm.user?.first_name ?? "No firstName ")//"Surname"
-                    .font(.system(size: 18))
-                    .font(.headline)
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .top) {
+                Image(systemName: "camera.circle.fill")
+                    .font(.system(size: 50))
                     .foregroundColor(.white)
-                    .lineLimit(1)
-                Text(vm.user?.last_name ?? "No lastName")//"Name"
-                    .font(.system(size: 18))
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .lineLimit(1)
+                Spacer()
+                Image(systemName: isDarkMode ? "sun.max.fill" : "moon.stars.fill")
+                    .font(.system(size: 24))
+                    .animation(Animation.linear(duration: 10), value: offset)
+                    .foregroundColor(Color.white)
+                    .padding(.trailing).padding(.top,5)
+                    .onTapGesture {
+                        if isDarkMode {
+                            isDarkMode = false
+                        } else {
+                            isDarkMode = true
+                        }
+                    }
             }
-            Spacer()
-            
-            Button(action: {
-                showEdit.toggle() },
-                label: {
-                Image(systemName: "pencil.circle")
-                    .foregroundColor(.white)
-                    .font(.system(size: 35))
-            })
-                .padding(.trailing)
-                .fullScreenCover(isPresented: $showEdit) {
-                TeacherEditProfil()
+            HStack {
+                Text("Surname")//"Surname"
+                    .font(.headline)
+                    .fontWeight(.heavy)
+                    .foregroundColor(Color("profilTitleColor"))
+                    .lineLimit(1)
+                Text("Name" )//"Name"
+                    .font(.headline)
+                    .fontWeight(.heavy)
+                    .foregroundColor(Color("profilTitleColor"))
+                    .lineLimit(1)
+                Spacer()
+                Button(action: {
+                    showEdit.toggle() },
+                       label: {
+                    Image(systemName: "pencil.circle")
+                        .foregroundColor(.white)
+                        .font(.system(size: 28))
+                })
+                    .padding(.trailing,10)
+                    .fullScreenCover(isPresented: $showEdit) {
+                        TeacherEditProfil()
+                    }
             }
         }
-       
     }
     
     private var teachCategory: some View {
         VStack(alignment: .leading){
+            //.......
             Spacer()
             HStack {
                 Button(action: {
-                    UserDefaults.standard.set(false, forKey: "teacherStatus")
-                    NotificationCenter.default.post(name: Notification.Name("teacherStatus"), object: nil)
+                    teachSign = false
                     UserDefaults.standard.removeObject(forKey: "token")
                 }, label: {
                     HStack(spacing:0){
-                        Image("outPut")
-                        Text("LOGOUT")
+                        Image(systemName: "arrow.backward.square")
+                            .foregroundColor(Color("categoryIconColor"))
+                        Text("Logout")
                             .font(.headline)
-                            .font(.system(size: 17))
-                            .foregroundColor(.black)
-                            .padding(.leading)
+                            .fontWeight(.heavy)
+                            .foregroundColor(Color("basicTitlesColor"))
+                            .padding(.leading,5)
                     }
                     .padding()
                 })
@@ -146,6 +158,6 @@ extension TeacherMenuLeftView {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.white)
+        .background(Color("categoryBackColor").opacity(0.9))
     }
 }
