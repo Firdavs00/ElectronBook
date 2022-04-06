@@ -21,8 +21,11 @@ struct StudentMenuLeftView: View {
         ZStack {
             // Blur View...
             if animateBG  {
+                
                 menu
+                
             } else {
+                
                 menu.hidden()
             }
             
@@ -67,14 +70,19 @@ extension StudentMenuLeftView {
         
         BlurView(style: .systemMaterialDark)
             .onTapGesture {
+                
                 withAnimation(
                     .interactiveSpring(response: 0.4, dampingFraction: 0.3, blendDuration: 0.3)) {
                         animatePath.toggle()
+                        
                     }
                 withAnimation {
+                    
                     animateBG.toggle()
+                    
                 }
                 withAnimation(.spring().delay(0.1)) {
+                    
                     showMenu.toggle()
                 }
             }
@@ -82,44 +90,61 @@ extension StudentMenuLeftView {
     private var studCategory: some View {
         
         VStack(alignment: .leading,spacing: 0) {
+            
             VStack {
+                
                 HStack(alignment:.top) {
+                    
                     Image("logo")
                         .frame(width: 80, height: 80)
                         .shadow(color: Color.green.opacity(0.5), radius: 10, x: -5, y: 10)
                         .padding(.top).padding(.leading,70)
+                    
                     Spacer()
+                    
                     Image(systemName: isDarkMode ? "sun.max.fill" : "moon.stars.fill")
                         .font(.system(size: 24))
                         .animation(Animation.linear(duration: 10), value: offset)
                         .foregroundColor(Color.white)
                         .padding(.trailing,25)
                         .onTapGesture {
+                            
                             if isDarkMode {
+                                
                                 isDarkMode = false
+                                
                             } else {
+                                
                                 isDarkMode = true
                             }
                         }
                 }
             }
-            .padding(.bottom).padding(.trailing)
+            .padding(.bottom)
+            .padding(.trailing)
             .background(Color("profilBackColor"))
+            
             Divider()
                 .background(isDarkMode ? .white : .black)
+            
             Spacer()
             
             Button(action: {
+                
                           studSign = false
+                
                       }, label: {
+                          
                           HStack(spacing:0){
                               Image(systemName: "arrow.backward.square")
                                   .foregroundColor(Color("categoryIconColor"))
+                              
                           Text("Logout")
                               .font(.headline)
                               .fontWeight(.heavy)
                               .foregroundColor(Color("basicTitlesColor"))
                               .padding(.leading,5)
+                              
                           }
                           .padding()
                       })

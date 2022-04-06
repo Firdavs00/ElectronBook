@@ -45,6 +45,7 @@ class LoginViewModel: ObservableObject {
                         }
                     }
                 }else {
+                    self.teachSign = true
                     print("---->\(String(describing: error))")
                 }
             }

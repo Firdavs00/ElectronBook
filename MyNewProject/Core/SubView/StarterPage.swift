@@ -17,11 +17,16 @@ struct StarterPage: View {
     var body: some View {
         VStack {
             if self.teachSign {
+                
                 TeacherHomePage()
+                
             } else   if self.studSign {
+                
                 StudentHomePage()
+                
             } else {
-                choicePage()
+                
+                ChoicePage()
             }
         }
     }

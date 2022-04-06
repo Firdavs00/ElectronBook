@@ -16,12 +16,18 @@ struct StudentNavigationBar: View {
     
     var body: some View {
         VStack {
+            
             HStack {
+                
                 Button{
+                    
                     withAnimation {
+                        
                         animateBG.toggle()
+                        
                     }
                     withAnimation(.spring()) {
+                        
                         showMenu.toggle()
                     }
                     // Animating Path with little Dwlay...
@@ -30,19 +36,26 @@ struct StudentNavigationBar: View {
                             animatePath.toggle()
                         }
                 } label: {
+                    
                     Image(systemName: "line.3.horizontal")
                         .padding(.leading)
                         .foregroundColor(Color("acsentColor"))
                 }
+                
                 Spacer()
+                
                 Text("Elektron darslik")
                     .font(.headline)
                     .foregroundColor(Color("basicTitlesColor"))
                  
                 Spacer()
+                
                 Button {
+                    
                     showCreate.toggle()
+                    
                 } label: {
+                    
                     Image(systemName: "folder.fill.badge.plus")
                         .padding(.trailing)
                 }

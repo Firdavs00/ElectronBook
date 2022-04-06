@@ -17,19 +17,29 @@ struct LaunchScreenView: View { //Elektron darslik yuklanmoqda...
     @Binding var showLaunchView: Bool
     
     var body: some View {
+        
         ZStack {
+            
             Color("viewColor")
                 .ignoresSafeArea()
+            
             VStack {
+                
                 Spacer()
+                
                 Image("Tatulogo")
                     .resizable()
                     .clipShape(Circle())
                     .frame(width: 200, height: 200)
+                
                 ZStack {
+                    
                     if showLoadingText {
+                        
                         HStack(spacing: 0) {
+                            
                             ForEach(loadingText.indices) { index in
+                                
                                 Text(loadingText[index])
                                     .font(.headline)
                                     .fontWeight(.heavy)
@@ -40,22 +50,32 @@ struct LaunchScreenView: View { //Elektron darslik yuklanmoqda...
                         .transition(AnyTransition.scale.animation(.easeIn))
                     }
                 }
+                
                 Spacer()
+                
             }.padding(.bottom,80)
         }
         .onAppear {
+            
             showLoadingText.toggle()
+            
         }
         .onReceive(timer, perform: { _ in
+            
             withAnimation(.spring()) {
+                
                 let lastIndex = loadingText.count - 1
                 if counter == lastIndex {
+                    
                     counter = 0
                     loops += 1
+                    
                     if loops >= 2 {
+                        
                         showLaunchView = false
                     }
                 } else {
+                    
                     counter += 1
                 }
             }

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ProgresView: View {
     var body: some View {
+        
         VStack {
+            
             ProgressView()
         }
         .frame(width: 200, height: 200)

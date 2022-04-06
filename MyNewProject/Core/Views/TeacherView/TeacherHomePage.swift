@@ -15,19 +15,25 @@ struct TeacherHomePage: View {
     @State var animateBG: Bool = false
     
     var body: some View {
-
-        ZStack {
+        
+            ZStack {
+                
                 VStack {
+                    
                     TeacherNavigationBar(showMenu: $showMenu, showCreate: $showCreate, animatePath: $animatePath, animateBG: $animateBG)
+                    
                     Spacer()
+                    
                 }
                 Color("blurOpenBackColor")
                     .opacity(animateBG ? 0.25 : 0)
                     .ignoresSafeArea()
+                
                 TeacherMenuLeftView(showMenu: $showMenu, animatePath: $animatePath, animateBG: $animateBG)
                     .offset(x: showMenu ? 0 : -getRect().width )
+                
             }
-        .background(Color("viewColor"))
+            .background(Color("viewColor"))
     }
 }
 
