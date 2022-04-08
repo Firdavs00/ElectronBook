@@ -15,7 +15,7 @@ struct StudentMenuLeftView: View {
     @Binding var showMenu: Bool
     @Binding var animatePath: Bool
     @Binding var animateBG: Bool
-    @State var isLoading = false
+    @State var action = false
     
     var body: some View {
         ZStack {
@@ -33,6 +33,11 @@ struct StudentMenuLeftView: View {
             VStack(alignment: .leading, spacing: 25) {
                
                 studCategory
+                
+                if action {
+                    NavigationLink(destination:
+                                    LectureDownloadStudentView(), isActive: $action){}
+                }
             }
             .padding(.trailing, 105)
             .padding(.top, getSafeArea().top)
@@ -127,27 +132,76 @@ extension StudentMenuLeftView {
             Divider()
                 .background(isDarkMode ? .white : .black)
             
-            Spacer()
+            Button(action: {
+                action = true
+            }, label: {
+                HStack {
+                    Image(systemName: "text.book.closed.fill")
+                        .font(.system(size: 20))
+                        .foregroundColor(Color(hex: "#435971"))
+                        .padding(8)
+                    Text("Maruzalar")
+                        .font(.custom("PublicSans-Regular", size: 17))
+                        .foregroundColor(Color(hex: "#697A8D"))
+                    Spacer()
+                }
+            })
+            .frame(width: 250)
+            .background(Color.white)
+            .overlay(Rectangle().stroke(Color.white,lineWidth: 1))
+            .cornerRadius(8)
+            .shadow(color: Color.blue.opacity(0.4), radius: 8, x: -5, y: 8)
+            .padding().padding(.top)
             
             Button(action: {
-                
-                          studSign = false
-                
-                      }, label: {
-                          
-                          HStack(spacing:0){
-                              Image(systemName: "arrow.backward.square")
-                                  .foregroundColor(Color("categoryIconColor"))
-                              
-                          Text("Logout")
-                              .font(.headline)
-                              .fontWeight(.heavy)
-                              .foregroundColor(Color("basicTitlesColor"))
-                              .padding(.leading,5)
-                              
-                          }
-                          .padding()
-                      })
+             
+            }, label: {
+                HStack {
+                    Image("test")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(Color.red)
+//                        .foregroundColor(Color(hex: "#435971"))
+                        .padding(8)
+                    Text("Testlar")
+                        .font(.custom("PublicSans-Regular", size: 17))
+                        .foregroundColor(Color(hex: "#697A8D"))
+                    Spacer()
+                }
+            })
+            .frame(width: 250)
+            .background(Color.white)
+            .overlay(Rectangle().stroke(Color.white,lineWidth: 1))
+            .cornerRadius(8)
+            .shadow(color: Color.blue.opacity(0.4), radius: 8, x: -5, y: 8)
+            .padding()
+            
+            Spacer()
+            HStack {
+                Button(action: {
+                    
+                    studSign = false
+                }, label: {
+                    HStack {
+                        Image(systemName: "arrow.backward.square")
+                            .font(.system(size: 20))
+                            .foregroundColor(Color(hex: "#435971"))
+                            .padding(8)
+                        Text("Logout")
+                            .font(.custom("PublicSans-Regular", size: 17))
+                            .foregroundColor(Color(hex: "#697A8D"))
+                        Spacer()
+                    }
+                })
+                .frame(width: 150)
+                .background(Color.white)
+                .overlay(Rectangle().stroke(Color.white,lineWidth: 1))
+                .cornerRadius(8)
+                .shadow(color: Color.blue.opacity(0.4), radius: 8, x: -5, y: 8)
+                .padding()
+
+                Spacer()
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("categoryBackColor").opacity(0.9))

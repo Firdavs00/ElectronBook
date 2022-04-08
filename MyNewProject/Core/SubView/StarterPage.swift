@@ -15,19 +15,22 @@ struct StarterPage: View {
     init() { }
     
     var body: some View {
-        VStack {
-            if self.teachSign {
-                
-                TeacherHomePage()
-                
-            } else   if self.studSign {
-                
-                StudentHomePage()
-                
-            } else {
-                
-                ChoicePage()
+        NavigationView {
+            VStack {
+                if self.teachSign {
+                    
+                    TeacherHomePage()
+                    
+                } else   if self.studSign {
+                    
+                    StudentHomePage()
+                    
+                } else {
+                    
+                    ChoicePage()
+                }
             }
+            .navigationBarHidden(true)
         }
     }
 }

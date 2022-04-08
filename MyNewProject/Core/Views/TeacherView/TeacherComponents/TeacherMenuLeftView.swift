@@ -12,7 +12,7 @@ struct TeacherMenuLeftView: View {
     @AppStorage("teacherSignIn") var teachSign: Bool = false
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
     @State private var offset: CGFloat = 180
-
+    
     @State var action =  false
     @Binding var showMenu: Bool
     @Binding var animatePath: Bool
@@ -21,8 +21,6 @@ struct TeacherMenuLeftView: View {
     
     var body: some View {
         
-        NavigationView {
-            
         ZStack {
             // Blur View...
             if animateBG  {
@@ -44,15 +42,15 @@ struct TeacherMenuLeftView: View {
                 teachCategory
                 
                 if action {
-                    
-                    NavigationLink(destination: MaruzalarView(), isActive: $action){}
+                    NavigationLink(destination:
+                                    LectureAddTeacherView(), isActive: $action){}
                 }
             }
             .padding(.trailing, 105)
             .padding(.top, getSafeArea().top)
             .padding(.bottom, getSafeArea().bottom)
             .frame(maxWidth:.infinity,maxHeight: .infinity, alignment: .topLeading)
-           
+            
         }
         .clipShape(MenuShape(value: animatePath ? 150 : 0))
         .background(
@@ -70,8 +68,6 @@ struct TeacherMenuLeftView: View {
                 .padding(.leading, -50)
         )
         .edgesIgnoringSafeArea(.all)
-        .navigationBarHidden(true)
-    }
     }
 }
 
@@ -79,7 +75,7 @@ struct TeacherMenuLeftView: View {
 struct TeacherMenuLeftView_Previews: PreviewProvider {
     static var previews: some View {
         TeacherMenuLeftView(showMenu: .constant(true), animatePath: .constant(true), animateBG: .constant(true))
-            
+        
     }
 }
 
@@ -138,14 +134,12 @@ extension TeacherMenuLeftView {
             HStack {
                 
                 Text("Surname")//"Surname"
-                    .font(.headline)
-                    .fontWeight(.heavy)
+                    .font(.custom("PublicSans-Thin_Medium", size: 18))
                     .foregroundColor(Color("profilTitleColor"))
                     .lineLimit(1)
                 
                 Text("Name" )//"Name"
-                    .font(.headline)
-                    .fontWeight(.heavy)
+                    .font(.custom("PublicSans-Thin_Medium", size: 18))
                     .foregroundColor(Color("profilTitleColor"))
                     .lineLimit(1)
                 
@@ -162,11 +156,11 @@ extension TeacherMenuLeftView {
                         .foregroundColor(.white)
                         .font(.system(size: 28))
                 })
-                    .padding(.trailing,10)
-                    .fullScreenCover(isPresented: $showEdit) {
-                        
-                        TeacherEditProfil()
-                    }
+                .padding(.trailing,10)
+                .fullScreenCover(isPresented: $showEdit) {
+                    
+                    TeacherEditProfil()
+                }
             }
         }
     }
@@ -181,14 +175,12 @@ extension TeacherMenuLeftView {
             }, label: {
                 HStack {
                     Image(systemName: "text.book.closed.fill")
-                        .font(.system(size: 23))
-                        .foregroundColor(Color.black)
+                        .font(.system(size: 20))
+                        .foregroundColor(Color(hex: "#435971"))
                         .padding(8)
                     Text("Maruzalar")
-                        .font(.system(size: 20))
-                        .font(.headline)
-                        .fontWeight(.none)
-                        .foregroundColor(Color("basicTitlesColor"))
+                        .font(.custom("PublicSans-Regular", size: 17))
+                        .foregroundColor(Color(hex: "#697A8D"))
                     Spacer()
                 }
             })
@@ -200,19 +192,18 @@ extension TeacherMenuLeftView {
             .padding().padding(.top)
             
             Button(action: {
-             
+                
             }, label: {
                 HStack {
                     Image("test")
                         .resizable()
-                        .frame(width: 23, height: 23)
-                        .foregroundColor(Color.black)
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(Color.red)
+                    //                        .foregroundColor(Color(hex: "#435971"))
                         .padding(8)
                     Text("Testlar")
-                        .font(.system(size: 20))
-                        .font(.headline)
-                        .fontWeight(.none)
-                        .foregroundColor(Color("basicTitlesColor"))
+                        .font(.custom("PublicSans-Regular", size: 17))
+                        .foregroundColor(Color(hex: "#697A8D"))
                     Spacer()
                 }
             })
@@ -230,13 +221,12 @@ extension TeacherMenuLeftView {
                 }, label: {
                     HStack {
                         Image(systemName: "arrow.backward.square")
-                            .font(.system(size: 23))
-                            .foregroundColor(Color.black)
+                            .font(.system(size: 20))
+                            .foregroundColor(Color(hex: "#435971"))
                             .padding(8)
                         Text("Logout")
-                            .font(.headline)
-                            .fontWeight(.heavy)
-                            .foregroundColor(Color("basicTitlesColor"))
+                            .font(.custom("PublicSans-Regular", size: 17))
+                            .foregroundColor(Color(hex: "#697A8D"))
                         Spacer()
                     }
                 })
@@ -246,7 +236,7 @@ extension TeacherMenuLeftView {
                 .cornerRadius(8)
                 .shadow(color: Color.blue.opacity(0.4), radius: 8, x: -5, y: 8)
                 .padding()
-
+                
                 Spacer()
             }
         }

@@ -16,8 +16,7 @@
 		8846B6D327D67D0E007E588F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846B6D227D67D0E007E588F /* LoginViewModel.swift */; };
 		8846B6D527D67D21007E588F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846B6D427D67D21007E588F /* LoginModel.swift */; };
 		8846B6D727D68001007E588F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846B6D627D68001007E588F /* UserDefaults.swift */; };
-		88714BB827F8A0C8003B17F9 /* MaruzalarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88714BB727F8A0C8003B17F9 /* MaruzalarView.swift */; };
-		8874773E27741B0D00D7E923 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8874773D27741B0D00D7E923 /* CreateView.swift */; };
+		88714BB827F8A0C8003B17F9 /* LectureAddTeacherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88714BB727F8A0C8003B17F9 /* LectureAddTeacherView.swift */; };
 		88B850CA2788601D00E0600E /* StarterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B850C92788601D00E0600E /* StarterPage.swift */; };
 		88B850CE278873B800E0600E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88B850CD278873B800E0600E /* GoogleService-Info.plist */; };
 		88B9FEE027D0A1EA000B1DBB /* StudentHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9FEDF27D0A1EA000B1DBB /* StudentHomePage.swift */; };
@@ -26,6 +25,8 @@
 		88B9FEF027D0B7CC000B1DBB /* StudentNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9FEEF27D0B7CC000B1DBB /* StudentNavigationBar.swift */; };
 		88B9FEF227D0B801000B1DBB /* StudentMenuLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B9FEF127D0B801000B1DBB /* StudentMenuLeftView.swift */; };
 		88C50E9927DF4638006EAEA0 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C50E9827DF4638006EAEA0 /* ProgressView.swift */; };
+		88DC81D827FF6E1A008D5FC3 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC81D727FF6E1A008D5FC3 /* ListView.swift */; };
+		88DC81DA27FF82C6008D5FC3 /* LectureDownloadStudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC81D927FF82C6008D5FC3 /* LectureDownloadStudentView.swift */; };
 		88E5C8E5276FACFB00C76560 /* MyNewProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E5C8E4276FACFB00C76560 /* MyNewProjectApp.swift */; };
 		88E5C8E9276FACFD00C76560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E5C8E8276FACFD00C76560 /* Assets.xcassets */; };
 		88E5C8EC276FACFD00C76560 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E5C8EB276FACFD00C76560 /* Preview Assets.xcassets */; };
@@ -46,8 +47,7 @@
 		8846B6D227D67D0E007E588F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8846B6D427D67D21007E588F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		8846B6D627D68001007E588F /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		88714BB727F8A0C8003B17F9 /* MaruzalarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaruzalarView.swift; sourceTree = "<group>"; };
-		8874773D27741B0D00D7E923 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		88714BB727F8A0C8003B17F9 /* LectureAddTeacherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureAddTeacherView.swift; sourceTree = "<group>"; };
 		88B850C92788601D00E0600E /* StarterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterPage.swift; sourceTree = "<group>"; };
 		88B850CD278873B800E0600E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		88B9FEDF27D0A1EA000B1DBB /* StudentHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentHomePage.swift; sourceTree = "<group>"; };
@@ -56,6 +56,8 @@
 		88B9FEEF27D0B7CC000B1DBB /* StudentNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentNavigationBar.swift; sourceTree = "<group>"; };
 		88B9FEF127D0B801000B1DBB /* StudentMenuLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMenuLeftView.swift; sourceTree = "<group>"; };
 		88C50E9827DF4638006EAEA0 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		88DC81D727FF6E1A008D5FC3 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		88DC81D927FF82C6008D5FC3 /* LectureDownloadStudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDownloadStudentView.swift; sourceTree = "<group>"; };
 		88E5C8E1276FACFB00C76560 /* MyNewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E5C8E4276FACFB00C76560 /* MyNewProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewProjectApp.swift; sourceTree = "<group>"; };
 		88E5C8E8276FACFD00C76560 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,11 +103,11 @@
 		882B00D827739DE300710F4F /* SubView */ = {
 			isa = PBXGroup;
 			children = (
+				8846B6CC27D5C038007E588F /* Launch */,
 				88B850C92788601D00E0600E /* StarterPage.swift */,
 				882B00D0277356D300710F4F /* Login */,
 				882B00DB27739FAE00710F4F /* BlurView.swift */,
 				88E5C8F3276FADE400C76560 /* ChoicePage.swift */,
-				8874773D27741B0D00D7E923 /* CreateView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -147,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				88C50E9627DF4615006EAEA0 /* Components */,
-				8846B6CC27D5C038007E588F /* Launch */,
 				882B00D827739DE300710F4F /* SubView */,
 				88E5C8F2276FAD1B00C76560 /* Views */,
 			);
@@ -176,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				88B9FEEF27D0B7CC000B1DBB /* StudentNavigationBar.swift */,
+				88DC81D927FF82C6008D5FC3 /* LectureDownloadStudentView.swift */,
 				88B9FEF127D0B801000B1DBB /* StudentMenuLeftView.swift */,
 			);
 			path = StudentComponents;
@@ -187,7 +189,7 @@
 				88F0C29427D3D622007EC19B /* ImagePicker.swift */,
 				88F0C29227D34E3D007EC19B /* TeacherEditProfil.swift */,
 				88B9FEE927D0A639000B1DBB /* TeachNavigationBar.swift */,
-				88714BB727F8A0C8003B17F9 /* MaruzalarView.swift */,
+				88714BB727F8A0C8003B17F9 /* LectureAddTeacherView.swift */,
 				88B9FEE527D0A49D000B1DBB /* TeacherMenuLeftView.swift */,
 			);
 			path = TeacherComponents;
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				88C50E9827DF4638006EAEA0 /* ProgressView.swift */,
+				88DC81D727FF6E1A008D5FC3 /* ListView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -387,9 +390,9 @@
 				8846B6D527D67D21007E588F /* LoginModel.swift in Sources */,
 				88B9FEF027D0B7CC000B1DBB /* StudentNavigationBar.swift in Sources */,
 				88F0C29527D3D622007EC19B /* ImagePicker.swift in Sources */,
-				8874773E27741B0D00D7E923 /* CreateView.swift in Sources */,
 				882B00D42773612F00710F4F /* TeacherHomePage.swift in Sources */,
 				88B850CA2788601D00E0600E /* StarterPage.swift in Sources */,
+				88DC81D827FF6E1A008D5FC3 /* ListView.swift in Sources */,
 				88F0C29327D34E3D007EC19B /* TeacherEditProfil.swift in Sources */,
 				8846B6D327D67D0E007E588F /* LoginViewModel.swift in Sources */,
 				88B9FEF227D0B801000B1DBB /* StudentMenuLeftView.swift in Sources */,
@@ -397,8 +400,9 @@
 				8846B6D027D5C083007E588F /* LaunchScreenView.swift in Sources */,
 				882B00D2277356F900710F4F /* LoginIN.swift in Sources */,
 				8846B6D727D68001007E588F /* UserDefaults.swift in Sources */,
+				88DC81DA27FF82C6008D5FC3 /* LectureDownloadStudentView.swift in Sources */,
 				88E5C8F4276FADE400C76560 /* ChoicePage.swift in Sources */,
-				88714BB827F8A0C8003B17F9 /* MaruzalarView.swift in Sources */,
+				88714BB827F8A0C8003B17F9 /* LectureAddTeacherView.swift in Sources */,
 				88E5C8E5276FACFB00C76560 /* MyNewProjectApp.swift in Sources */,
 				88B9FEE027D0A1EA000B1DBB /* StudentHomePage.swift in Sources */,
 				88B9FEEA27D0A639000B1DBB /* TeachNavigationBar.swift in Sources */,

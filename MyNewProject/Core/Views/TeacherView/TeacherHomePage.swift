@@ -16,6 +16,7 @@ struct TeacherHomePage: View {
     
     var body: some View {
         
+//        NavigationView {
             ZStack {
                 
                 VStack {
@@ -23,8 +24,8 @@ struct TeacherHomePage: View {
                     TeacherNavigationBar(showMenu: $showMenu, showCreate: $showCreate, animatePath: $animatePath, animateBG: $animateBG)
                     
                     Spacer()
-                    
                 }
+     
                 Color("blurOpenBackColor")
                     .opacity(animateBG ? 0.25 : 0)
                     .ignoresSafeArea()
@@ -33,7 +34,11 @@ struct TeacherHomePage: View {
                     .offset(x: showMenu ? 0 : -getRect().width )
                 
             }
-            .background(Color("viewColor"))
+//            .navigationBarHidden(true)
+//            .navigationBarItems(
+//                leading: <#T##View#>,
+//                trailing: <#T##View#>)
+//        }
     }
 }
 

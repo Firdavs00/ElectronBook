@@ -9,7 +9,39 @@ import SwiftUI
 
 struct ListView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Group {
+                    Spacer()
+                    Text("Mavzu nomi")
+                        .fontWeight(.bold)
+                    
+                    Spacer()
+                    
+                    Rectangle()
+                        .frame(width: 1, height: 20)
+                    
+                    Spacer()
+                    
+                    Text("O'qituvchi nomi")
+                        .fontWeight(.bold)
+                    Spacer()
+                    
+                    Rectangle()
+                        .frame(width: 1, height: 20)
+
+                    Spacer()
+                }
+                
+                Text("Yaratilgan sana")
+                    .fontWeight(.bold)
+                Spacer()
+            }
+            Divider()
+                .background(Color.black)
+            
+            Spacer()
+        }
     }
 }
 

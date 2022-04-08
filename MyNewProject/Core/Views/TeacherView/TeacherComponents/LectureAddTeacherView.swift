@@ -74,7 +74,7 @@ struct LectureAddTeacherView: View {
                 }
                 .frame(width: UIScreen.main.bounds.width - 30, height: isAnimateKafedra ? 250 : 0)
                 .animation(Animation.easeOut(duration: 0.3))
-                .padding(.top, -8)
+//                .padding(.top, -8)
             }
 
             HStack {

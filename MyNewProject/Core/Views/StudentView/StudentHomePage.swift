@@ -27,6 +27,7 @@ struct StudentHomePage: View {
                 StudentMenuLeftView(showMenu: $showMenu, animatePath: $animatePath, animateBG: $animateBG)
                     .offset(x: showMenu ? 0 : -getRect().width)
             }
+          
     }
 }
 

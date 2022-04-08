@@ -17,9 +17,7 @@ struct TeacherNavigationBar: View {
     var body: some View {
         
         VStack {
-            
             HStack {
-                
                 Button{
                     
                     // Animating Path with little Dwlay...
@@ -27,14 +25,11 @@ struct TeacherNavigationBar: View {
                         .interactiveSpring(response: 0.4, dampingFraction: 0.3, blendDuration: 0.3).delay(0.2)) {
                             
                             animatePath.toggle()
-                            
                     withAnimation {
                         
                         animateBG.toggle()
-                        
                     }
                     withAnimation(.spring()) {
-                        
                         showMenu.toggle()
                     }
                         }
@@ -54,21 +49,13 @@ struct TeacherNavigationBar: View {
                 Spacer()
                 
                 Button {
-                    
                     showCreate.toggle()
-                    
                 } label: {
-                    
+
                     Image(systemName: "folder.fill.badge.plus")
                         .padding(.trailing)
                         .foregroundColor(Color("acsentColor"))
-
                 }
-                .sheet(isPresented: $showCreate, content: {
-                    
-                    CreateView()
-                    
-                })
             }
             Rectangle()
                 .frame(width: UIScreen.main.bounds.width, height: 1)
